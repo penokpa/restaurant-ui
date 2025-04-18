@@ -29,7 +29,11 @@ const ImageGallery = ({ imageData, testid }: ImageGalleryProps) => {
                 if (!x.src) return;
 
                 return (
-                  <div key={i} onClick={() => setIndex(i)}>
+                  <div
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    className="image-wrapper"
+                  >
                     <ImageWithFallBack
                       src={x.src}
                       alt="Food Image"

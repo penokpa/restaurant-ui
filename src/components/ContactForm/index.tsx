@@ -51,16 +51,15 @@ const ContactForm = ({
                 <div className="contact-title">
                   <Typography as="h4">{contactFormTitle}</Typography>
                 </div>
-                {email && (
+                {address && (
                   <div className="contact-method">
-                    <Icons icon={emailIcon} />
+                    <Icons icon={addressIcon} />
                     <div className="content-info">
-                      <Typography as="subtitle1">
-                        <a href={`mail:${email}`}>{email}</a>
-                      </Typography>
+                      <Typography as="subtitle1">{address}</Typography>
                     </div>
                   </div>
                 )}
+
                 {phoneNumber && (
                   <div className="contact-method">
                     <Icons icon={phoneIcon} />
@@ -71,11 +70,13 @@ const ContactForm = ({
                     </div>
                   </div>
                 )}
-                {address && (
+                {email && (
                   <div className="contact-method">
-                    <Icons icon={addressIcon} />
+                    <Icons icon={emailIcon} />
                     <div className="content-info">
-                      <Typography as="subtitle1">{address}</Typography>
+                      <Typography as="subtitle1">
+                        <a href={`mail:${email}`}>{email}</a>
+                      </Typography>
                     </div>
                   </div>
                 )}

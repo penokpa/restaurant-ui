@@ -21,14 +21,32 @@ export type HeaderProps = {
   shouldLogoFloat?: boolean;
   isLogoRounded?: boolean;
   LinkComponent?: ReactElement;
+  boxShadowOnLogo?: boolean;
+  headerHeight?: string;
+  navColor?: string;
+  navHoverColor?: string;
+  navActiveColor?: string;
+  headerBgColor?: string;
+  logoWidth?: string;
+  logoHeight?: string;
+  className?: string;
 };
 
 const Header = ({
   logo,
   navLink,
+  LinkComponent,
   shouldLogoFloat = false,
   isLogoRounded = false,
-  LinkComponent,
+  boxShadowOnLogo = false,
+  headerHeight,
+  navColor,
+  navHoverColor,
+  navActiveColor,
+  headerBgColor,
+  logoWidth,
+  logoHeight,
+  className,
 }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isHeaderSticky, setIsHeaderSticky] = React.useState(false);
@@ -49,18 +67,28 @@ const Header = ({
       <StyledDiv
         id="header"
         data-testid="header"
-        className={clsx({ sticky: isHeaderSticky, showBoxShadow: !isMenuOpen })}
+        className={clsx(className, {
+          sticky: isHeaderSticky,
+          showBoxShadow: !isMenuOpen,
+        })}
+        $headerheight={headerHeight}
+        $navcolor={navColor}
+        $navhovercolor={navHoverColor}
+        $navactivecolor={navActiveColor}
+        $logowidth={logoWidth}
+        $logoheight={logoHeight}
       >
         <Container fluid>
           <Row>
             <Col>
-              <div className="header-wrapper">
+              <div className="header-wrapper" data-testid="header-wrapper-id">
                 <Link
                   to="/"
                   LinkComponent={LinkComponent}
                   className={clsx("logo-wrapper", {
                     "float-logo": !!shouldLogoFloat,
                     circle: !!isLogoRounded,
+                    "box-shadow": !!boxShadowOnLogo,
                   })}
                   testId="header-logo-wrapper"
                 >
@@ -78,7 +106,11 @@ const Header = ({
 
                       const active = pathname === x.url;
                       return (
-                        <li className={clsx("menu-list", { active })} key={i}>
+                        <li
+                          className={clsx("menu-list", { active })}
+                          key={i}
+                          data-testid="menu-list-id"
+                        >
                           <Link to={x.url} LinkComponent={LinkComponent}>
                             {x.label}
                           </Link>
@@ -107,7 +139,14 @@ const Header = ({
         overlayZindex={5}
         drawerTestId="header-drawer"
       >
-        <HeaderMenu navLink={navLink} LinkComponent={LinkComponent} />
+        <HeaderMenu
+          navLink={navLink}
+          LinkComponent={LinkComponent}
+          headerBgColor={headerBgColor}
+          navColor={navColor}
+          navHoverColor={navHoverColor}
+          navActiveColor={navActiveColor}
+        />
       </Drawer>
     </>
   );

@@ -9,11 +9,15 @@ import Header from "./index";
  * A responsive header component that provides navigation and branding for the application.
  *
  * ## Features
- * - Responsive design with mobile menu
- * - Customizable logo with floating and rounded options
- * - Sticky behavior on scroll
- * - React Router integration
- * - Accessibility support
+ * - Responsive design with mobile menu.
+ * - Customizable logo with floating and rounded options.
+ * - Sticky behavior on scroll.
+ * - React Router integration.
+ * - Accessibility support.
+ * - Toggle boxshadow for the logo.
+ * - Dynamic header height, navigation color, header background color for now its works only in mobile view.
+ * - Support custom height and width for the logo.
+ * - Support custom classname to override the css.
  *
  * ## Usuage
  * ```tsx
@@ -25,70 +29,139 @@ import Header from "./index";
  *   ]}
  *  shouldLogoFloat={false}
  *  isLogoRounded={false}
+ *  boxShadowOnLogo = {false}
+ *  headerHeight = "90px"  // default
+ *  navColor = "#000"
+ *  navHoverColor = "grey"
+ *  navActiveColor = "grey"
+ *  headerBgColor = "#fff" //bg color only works for mobile view
+ *  logoWidth = "100px"
+ *  logoHeigh = "70px"
+ *  className="custom-classname"
  * />
  * ```
  *
- * ## Props
- * - `logo`: URL of the logo image. If not provided, uses default logo
- * - `navlink`: Array of navigation links with url and label properties
- * - `shouldLogoFloat`: Whether the logo should float below the header
- * - `isLogoRounded`: Whether the logo should have rounded corners
  */
 const meta = {
   title: "Components/Header",
   component: Header,
   parameters: {
     layout: "fullscreen",
-    viewport: {
-      defaultViewport: "mobile1",
-      viewports: {
-        mobile1: {
-          name: "iPhone 12 Pro",
-          styles: {
-            width: "390px",
-            height: "844px",
-          },
-        },
-        mobile2: {
-          name: "iPhone 12 Pro Max",
-          styles: {
-            width: "428px",
-            height: "926px",
-          },
-        },
-        tablet: {
-          name: "iPad",
-          styles: {
-            width: "768px",
-            height: "1024px",
-          },
-        },
-        desktop: {
-          name: "Desktop",
-          styles: {
-            width: "1440px",
-            height: "900px",
-          },
-        },
-      },
-    },
   },
   argTypes: {
-    logo: {
-      control: "text",
-      description: "URL of the logo image. If not provided, uses default logo",
-    },
     navLink: {
       control: "object",
       description: "Array of navigation links with url and label properties",
+      table: {
+        type: { summary: "required" },
+        defaultValue: { summary: "required" },
+      },
+    },
+    logo: {
+      control: "text",
+      description: "URL of the logo image. If not provided, uses default logo",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "asset/image/logo.png" },
+      },
     },
     shouldLogoFloat: {
       control: "boolean",
       description: "Whether the logo should float below the header",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
     },
     isLogoRounded: {
       control: "boolean",
       description: "Whether the logo should have rounded corners",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    boxShadowOnLogo: {
+      control: "boolean",
+      description: "Whether the logo should have box shadow ",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    headerBgColor: {
+      control: "text",
+      description:
+        "Custom header background color, For now custom background only works for mobile view",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#fff" },
+      },
+    },
+    headerHeight: {
+      control: "text",
+      description:
+        "Customize the height of the header. Please use the value in pixel",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "90px" },
+      },
+    },
+    LinkComponent: {
+      control: "text",
+      description:
+        "It is for the routing purpose, If nothing is given then as a default it will be a tag. for example pass the routing component.",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "html a tag" },
+      },
+    },
+    navColor: {
+      control: "text",
+      description: "Color of navigation",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+    navActiveColor: {
+      control: "text",
+      description: "Navigation link color for active nav",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "grey" },
+      },
+    },
+    navHoverColor: {
+      control: "text",
+      description: "Navigation hover color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "grey" },
+      },
+    },
+    logoHeight: {
+      control: "text",
+      description: "Height of the logo",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "70px" },
+      },
+    },
+    logoWidth: {
+      control: "text",
+      description: "Width of the logo",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "100px" },
+      },
+    },
+    className: {
+      control: "text",
+      description: "Custom classname to override the style",
+      table: {
+        type: { summary: "optional" },
+      },
     },
   },
   decorators: [
@@ -179,58 +252,16 @@ export const RoundedLogo: Story = {
 };
 
 /**
- * Header with minimal navigation items
+ * Header with different nav color
  */
-export const MinimalNavigation: Story = {
+export const DifferentNavcolor: Story = {
   args: {
-    logo: "/logo.png",
-    navLink: [
-      { url: "/", label: "Home" },
-      { url: "/about", label: "About" },
-    ],
-  },
-  tags: ["!dev"],
-};
-
-/**
- * Header with extended navigation menu
- */
-export const ExtendedNavigation: Story = {
-  args: {
-    logo: "/logo.png",
-    navLink: [
-      ...defaultNavLinks,
-      { url: "/gallery", label: "Gallery" },
-      { url: "/blog", label: "Blog" },
-      { url: "/reservations", label: "Reservations" },
-    ],
-  },
-  tags: ["!dev"],
-};
-
-/**
- * Header using default logo
- */
-export const NoLogo: Story = {
-  args: {
+    logo: "/custom-logo.png",
     navLink: defaultNavLinks,
-  },
-  tags: ["!dev"],
-};
-
-/**
- * Header with long navigation labels
- */
-export const LongLabels: Story = {
-  args: {
-    logo: "/logo.png",
-    navLink: [
-      { url: "/", label: "Home" },
-      { url: "/about-us", label: "About Our Restaurant" },
-      { url: "/menu", label: "Our Delicious Menu" },
-      { url: "/contact-us", label: "Get in Touch With Us" },
-      { url: "/reservations", label: "Make a Reservation" },
-    ],
+    isLogoRounded: true,
+    navActiveColor: "rgb(14, 168, 96)",
+    navHoverColor: "rgb(14, 168, 96)",
+    navColor: "rgb(14, 168, 96)",
   },
   tags: ["!dev"],
 };

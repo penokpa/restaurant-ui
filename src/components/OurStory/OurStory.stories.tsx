@@ -13,6 +13,7 @@ import OurStory from "./index";
  * - Formatted description with support for line breaks (optional)
  * - Responsive layout
  * - Clean and modern design
+ * - Custom title, subtitle and description color
  * - Optional fluid container width
  *
  * ## Usage
@@ -22,13 +23,10 @@ import OurStory from "./index";
  *   storyTitle="Our Story"
  *   storySubTitle="Discover Our Journey"
  *   storyDescription="Welcome to our restaurant..."
- *   containerFluid={true}
- * />
- *
- * // Minimal usage
- * <OurStory
- *   storyTitle="Our Story"
- *   storyDescription="Welcome to our restaurant..."
+ *   titleColor="#000"
+ *   descriptionColor="#000"
+ *   subTitleColor="#000"
+ *   containerFluid
  * />
  * ```
  */
@@ -54,23 +52,63 @@ const meta = {
     ),
   ],
   argTypes: {
-    storyTitle: {
+    title: {
       control: "text",
       description: "The main title of the story section (optional)",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "optional" },
+      },
     },
-    storySubTitle: {
+    subTitle: {
       control: "text",
       description: "Optional subtitle for the story section",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "optional" },
+      },
     },
-    storyDescription: {
+    description: {
       control: "text",
       description:
         "The main content of the story, supports line breaks with \n (optional)",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "optional" },
+      },
+    },
+    descriptionColor: {
+      control: "text",
+      description: "Description text color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+    titleColor: {
+      control: "text",
+      description: "Title text color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+    subTitleColor: {
+      control: "text",
+      description: "Subtitle text color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
     },
     containerFluid: {
       control: "boolean",
       description: "Whether the container should be fluid (full width)",
       defaultValue: false,
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
     },
   },
 } satisfies Meta<typeof OurStory>;
@@ -78,37 +116,36 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const OurstoryPlayground: Story = {
   args: {
-    storyTitle: "Our Story",
-    storySubTitle: "Discover Our Journey",
-    storyDescription:
+    title: "Our Story",
+    subTitle: "Discover Our Journey",
+    description:
       "Welcome to our restaurant, where passion meets culinary excellence. Our journey began in 2010 with a simple dream: to create memorable dining experiences.\n\nOver the years, we've grown from a small family-owned establishment to a beloved destination for food enthusiasts. Our commitment to quality ingredients and innovative cooking techniques remains unchanged.\n\nToday, we continue to write our story, one delicious dish at a time.",
   },
+  tags: ["!autodocs"],
 };
 
-export const WithoutSubtitle: Story = {
+export const Default: Story = {
   args: {
-    storyTitle: "Our Story",
-    storyDescription:
+    title: "Our Story",
+    subTitle: "Discover Our Journey",
+    description:
+      "Welcome to our restaurant, where passion meets culinary excellence. Our journey began in 2010 with a simple dream: to create memorable dining experiences.\n\nOver the years, we've grown from a small family-owned establishment to a beloved destination for food enthusiasts. Our commitment to quality ingredients and innovative cooking techniques remains unchanged.\n\nToday, we continue to write our story, one delicious dish at a time.",
+  },
+  tags: ["!dev"],
+};
+
+export const WithCustomColor: Story = {
+  args: {
+    title: "Our Story",
+    subTitle: "Our subtitle story",
+    description:
       "Welcome to our restaurant, where passion meets culinary excellence. Our journey began in 2010 with a simple dream: to create memorable dining experiences.",
+    descriptionColor: "#ff8a33",
+    subTitleColor: "#ff8a33",
+    titleColor: "#ff8a33",
     containerFluid: false,
   },
-};
-
-export const LongContent: Story = {
-  args: {
-    storyTitle: "Our Rich History",
-    storySubTitle: "A Legacy of Excellence",
-    storyDescription:
-      "Founded in 2010, our restaurant has been a cornerstone of the community for over a decade.\n\nOur story began with a simple vision: to create a space where people could gather, share stories, and enjoy exceptional food. What started as a small family-owned establishment has grown into a beloved destination for food enthusiasts from near and far.\n\nThroughout our journey, we've remained committed to our core values:\n- Quality ingredients sourced from local farmers\n- Innovative cooking techniques that respect tradition\n- Warm, welcoming atmosphere that feels like home\n- Exceptional service that makes every guest feel special\n\nToday, we continue to write our story, one delicious dish at a time. We invite you to be part of our ongoing journey and create your own memories at our table.",
-    containerFluid: true,
-  },
-};
-
-export const Minimal: Story = {
-  args: {
-    storyTitle: "Our Story",
-    containerFluid: false,
-  },
+  tags: ["!dev"],
 };

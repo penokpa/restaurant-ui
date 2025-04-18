@@ -10,11 +10,28 @@ import { NavLinkType } from "../../types/header.types";
 type Props = {
   navLink: NavLinkType;
   LinkComponent?: ReactElement;
+  headerBgColor?: string;
+  navColor?: string;
+  navHoverColor?: string;
+  navActiveColor?: string;
 };
 
-const HeaderMenu = ({ navLink, LinkComponent }: Props) => {
+const HeaderMenu = ({
+  navLink,
+  LinkComponent,
+  headerBgColor,
+  navColor,
+  navHoverColor,
+  navActiveColor,
+}: Props) => {
   return (
-    <StyledUl className="menu-list-wrapper">
+    <StyledUl
+      className="menu-list-wrapper"
+      $bgcolor={headerBgColor}
+      $navcolor={navColor}
+      $navhovercolor={navHoverColor}
+      $navactivecolor={navActiveColor}
+    >
       {navLink.map((x) => {
         const { pathname } = window.location;
 

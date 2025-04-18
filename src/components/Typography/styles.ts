@@ -32,23 +32,27 @@ const style = ({ color }: StyleProps) => css`
     font-size: 40px;
     line-height: 50px;
     letter-spacing: 4px;
+    color: ${color || theme.color.primary};
   }
 
   &.h2 {
     font-size: 32px;
     line-height: 40px;
     letter-spacing: 2px;
+    color: ${color || theme.color.primary};
   }
 
   &.h3 {
     font-size: 28px;
     line-height: 38px;
     letter-spacing: 2px;
+    color: ${color || theme.color.primary};
   }
 
   &.h4 {
     font-size: 24px;
     line-height: 30px;
+    color: ${color || theme.color.primary};
   }
 
   &.h5 {
@@ -56,6 +60,7 @@ const style = ({ color }: StyleProps) => css`
     line-height: 28px;
     letter-spacing: 1px;
     font-weight: 400;
+    color: ${color || theme.color.primary};
 
     ${mediaQuery("md")} {
       font-size: 16px;
@@ -67,12 +72,14 @@ const style = ({ color }: StyleProps) => css`
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 1px;
+    color: ${color || theme.color.primary};
   }
 
   &.p {
     font-size: 20px;
     line-height: 40px;
     font-weight: 100;
+    color: ${color || theme.color.primary};
 
     ${mediaQuery("md")} {
       font-size: 18px;
@@ -84,6 +91,7 @@ const style = ({ color }: StyleProps) => css`
     font-size: 16px;
     line-height: 32px;
     letter-spacing: 1px;
+    color: ${color || theme.color.primary};
 
     ${mediaQuery("md")} {
       font-size: 14px;
@@ -94,13 +102,14 @@ const style = ({ color }: StyleProps) => css`
   &.subtitle2 {
     font-size: 14px;
     line-height: 24px;
+    color: ${color || theme.color.primary};
     strong {
       font-weight: 500;
     }
   }
 
   &.section-title {
-    color: ${color || theme.color.black["100"]};
+    color: ${color || theme.color.primary};
     font-size: 56px;
     font-family: inherit;
     position: relative;
@@ -116,7 +125,7 @@ const style = ({ color }: StyleProps) => css`
   }
 
   &.description-color {
-    color: ${color};
+    color: ${color || theme.color.primary};
   }
 
   &.section-title-helper {

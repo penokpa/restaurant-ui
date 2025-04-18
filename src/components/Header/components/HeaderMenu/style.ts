@@ -1,13 +1,27 @@
-import styled, { css } from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 
 import { mediaQuery } from "@/theme/utils";
 
-export const StyledUl = styled.ul`
-  ${({ theme }) => css`
+type StyleProps = {
+  theme: DefaultTheme;
+  $bgcolor?: string;
+  $navcolor?: string;
+  $navhovercolor?: string;
+  $navactivecolor?: string;
+};
+
+export const StyledUl = styled.ul<StyleProps>`
+  ${({
+    theme,
+    $bgcolor = "#fff",
+    $navcolor = "#000",
+    $navhovercolor = "grey",
+    $navactivecolor = "grey",
+  }) => css`
     &.menu-list-wrapper {
-      background-color: ${theme.color.grey["100"]};
+      background-color: ${$bgcolor};
       border-top: 1px solid #f2f2f2;
-      height: calc(100% - 73.6px);
+      height: calc(100% - 90px);
       position: absolute;
       width: 100%;
       overflow: scroll;
@@ -20,15 +34,12 @@ export const StyledUl = styled.ul`
       list-style: none;
       z-index: 999999;
 
-      ${mediaQuery("md")} {
-        height: calc(100% - 60px);
-      }
-
       li {
         font-family: ${theme.font.defaultSystemTheme};
         &.link-item {
           font-size: 24px;
           position: relative;
+          color: ${$navcolor};
           &::before {
             position: absolute;
             content: "";
@@ -36,7 +47,7 @@ export const StyledUl = styled.ul`
             height: 2px;
             width: 100%;
             visibility: hidden;
-            background-color: ${theme.color.black["100"]};
+            background-color: ${$navhovercolor};
             -webkit-transform: scaleX(0);
             transform: scaleX(0);
             -webkit-transition: all 0.3s ease-in-out 0s;
@@ -44,7 +55,7 @@ export const StyledUl = styled.ul`
           }
           &:hover {
             a {
-              color: ${theme.color.black["100"]};
+              color: ${$navhovercolor};
             }
 
             &::before {
@@ -56,7 +67,7 @@ export const StyledUl = styled.ul`
 
           &.active {
             a {
-              color: ${theme.color.black["100"]};
+              color: ${$navactivecolor};
               &::before {
                 position: absolute;
                 content: "";
@@ -64,7 +75,7 @@ export const StyledUl = styled.ul`
                 height: 2px;
                 width: 100%;
                 left: 0;
-                background-color: ${theme.color.black["100"]};
+                background-color: ${$navactivecolor};
               }
             }
           }
@@ -72,11 +83,11 @@ export const StyledUl = styled.ul`
           ${mediaQuery("md")} {
             font-size: 18px;
           }
-        }
-        a {
-          color: ${theme.color.yellow["100"]};
+          a {
+            color: inherit;
+          }
         }
       }
     }
-  `}
+  `};
 `;

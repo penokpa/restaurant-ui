@@ -24,12 +24,10 @@ const defaultStyle = css<ButtonStyleProps>`
   cursor: pointer;
 
   &.contained {
-    background-color: ${({ bgcolor, theme }) =>
-      bgcolor || theme.color.orange["100"]};
+    background-color: ${({ bgcolor, theme }) => bgcolor || theme.color.primary};
     box-shadow: none;
     color: ${({ color, theme }) => color || theme.color.white["100"]};
-    border: 1px solid
-      ${({ bgcolor, theme }) => bgcolor || theme.color.orange["100"]};
+    border: 1px solid ${({ bgcolor, theme }) => bgcolor || theme.color.primary};
     height: 100%;
 
     &:hover {
@@ -39,13 +37,13 @@ const defaultStyle = css<ButtonStyleProps>`
 
   &.outline {
     box-shadow: none;
-    color: ${({ color, theme }) => color || theme.color.orange["100"]};
-    border: 2px solid ${({ theme }) => theme.color.orange["100"]};
+    color: ${({ color, theme }) => color || theme.color.primary};
+    border: 2px solid ${({ theme }) => theme.color.primary};
     height: 100%;
 
     &:hover {
-      border: 2px solid ${({ theme }) => theme.color.orange["100"]};
-      background-color: ${({ theme }) => theme.color.orange["100"]};
+      border: 2px solid ${({ theme }) => theme.color.primary};
+      background-color: ${({ theme }) => theme.color.primary};
       color: ${({ theme }) => theme.color.white["100"]};
     }
   }

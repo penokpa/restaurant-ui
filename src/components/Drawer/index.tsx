@@ -10,7 +10,6 @@ import Overlay from "../Overlay";
 
 export type DrawerPosition = "left" | "right" | "top" | "bottom";
 
-const MotionStyledDrawer = motion.create(StyledDrawer);
 export interface DrawerProps {
   open: boolean;
   position?: DrawerPosition;
@@ -26,7 +25,10 @@ export interface DrawerProps {
   overlayColor?: string;
   style?: CSSProperties;
   drawerTestId?: string;
+  width?: number | string;
 }
+
+const MotionDrawer = motion(StyledDrawer);
 
 const Drawer: FC<DrawerProps> = ({
   open,
@@ -42,6 +44,7 @@ const Drawer: FC<DrawerProps> = ({
   overlayOpacity,
   style,
   drawerTestId,
+  width = "100%",
 }) => {
   React.useEffect(() => {
     if (open) {
@@ -62,7 +65,7 @@ const Drawer: FC<DrawerProps> = ({
             color={overlayColor}
             position="fixed"
           />
-          <MotionStyledDrawer
+          <MotionDrawer
             animate="open"
             data-testid={drawerTestId || "drawer-wrapper"}
             exit="closed"
@@ -73,6 +76,7 @@ const Drawer: FC<DrawerProps> = ({
             $size={size}
             $top={top}
             $zIndex={drawerZindex}
+            $width={width}
             style={style}
           >
             <div
@@ -81,7 +85,7 @@ const Drawer: FC<DrawerProps> = ({
               data-testid="overlay-wrapper"
             />
             {children}
-          </MotionStyledDrawer>
+          </MotionDrawer>
         </>
       )}
     </AnimatePresence>

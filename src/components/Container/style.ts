@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { mediaQuery } from "@/theme/utils";
 
 const ContainerWrapper = styled.div`
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
   margin-right: auto;
   margin-left: auto;
   width: 100%;

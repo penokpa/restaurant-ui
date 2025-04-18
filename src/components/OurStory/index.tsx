@@ -9,25 +9,31 @@ import Col from "../Col";
 import Typography from "../Typography";
 
 export type OurStoryProps = {
-  storyTitle?: string;
-  storySubTitle?: string;
-  storyDescription?: string;
+  title?: string;
+  subTitle?: string;
+  description?: string;
   containerFluid?: boolean;
+  titleColor?: string;
+  subTitleColor?: string;
+  descriptionColor?: string;
 };
 
 const OurStory = ({
-  storyTitle,
-  storyDescription,
-  storySubTitle,
+  title,
+  subTitle,
+  description,
   containerFluid = false,
+  titleColor,
+  descriptionColor,
+  subTitleColor,
 }: OurStoryProps) => {
-  const isContentNull = !storyTitle && !storyDescription && !storySubTitle;
+  const isContentNull = !description && !description && !subTitle;
 
   const formattedStoryContent = React.useMemo(() => {
-    if (!storyDescription || isContentNull) return "";
+    if (!description) return "";
 
-    return storyDescription.replace(/\n+/g, "<br>");
-  }, [storyDescription, isContentNull]);
+    return description.replace(/\n+/g, "<br>");
+  }, [description]);
 
   if (isContentNull) {
     return <span />;
@@ -43,28 +49,34 @@ const OurStory = ({
               data-testid="our-story-wrapper-id"
             >
               <div className="our-story-title">
-                {storyTitle && (
+                {title && (
                   <Typography
                     as="h2"
                     className="section-title"
                     testId="our-story-title-id"
+                    color={titleColor}
                   >
-                    {storyTitle}
+                    {title}
                   </Typography>
                 )}
-                {storySubTitle && (
+                {subTitle && (
                   <Typography
                     as="h6"
                     className="section-title-helper"
                     testId="our-story-sub-title-id"
+                    color={subTitleColor}
                   >
-                    {storySubTitle}
+                    {subTitle}
                   </Typography>
                 )}
               </div>
 
               {formattedStoryContent && (
-                <Typography as="p" testId="our-story-description">
+                <Typography
+                  as="p"
+                  testId="our-story-description"
+                  color={descriptionColor}
+                >
                   {parse(formattedStoryContent) as ReactNode}
                 </Typography>
               )}

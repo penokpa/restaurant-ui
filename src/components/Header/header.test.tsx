@@ -67,8 +67,36 @@ describe("Header Component", () => {
       render(<Header navLink={mockNavLinks} shouldLogoFloat />);
       const menuWrapper = screen.getByTestId("header-logo-wrapper");
       expect(menuWrapper).toHaveStyle({
-        width: "140px",
-        height: "140px",
+        width: "120px",
+        height: "120px",
+      });
+    });
+
+    it("should render with custom header height", () => {
+      render(<Header navLink={mockNavLinks} headerHeight="180px" />);
+      const headerWrapper = screen.getByTestId("header-wrapper-id");
+      expect(headerWrapper).toHaveStyle({
+        height: "180px",
+      });
+    });
+
+    it("should render the header logo with box-shadow", () => {
+      render(<Header navLink={mockNavLinks} boxShadowOnLogo />);
+      const logoWrapper = screen.getByTestId("header-logo-wrapper");
+      expect(logoWrapper).toHaveClass("box-shadow");
+      expect(logoWrapper).toHaveStyle({
+        "box-shadow": "0 5px 16px rgba(0, 0, 0, 0.1)",
+      });
+    });
+
+    it("should render the custom height and width of logo", () => {
+      render(
+        <Header navLink={mockNavLinks} logoHeight="150px" logoWidth="150px" />,
+      );
+      const logoWrapper = screen.getByTestId("header-logo-wrapper");
+      expect(logoWrapper).toHaveStyle({
+        height: "150px",
+        width: "150px",
       });
     });
   });

@@ -6,8 +6,8 @@ import Row from "./Row";
 import Container from "./Container";
 import Col from "./Col";
 import Typography from "./Typography";
-
-// Lazy load all components
+import MenuOverview from "./MenuOverview";
+import SimpleText from "./SimpleText";
 
 // Injecting theme provider in the components
 const Button = withTheme(lazy(() => import("./Button")));
@@ -44,6 +44,8 @@ export {
   InputField,
   InputTextArea,
   ImageWithFallBack,
+  MenuOverview,
+  SimpleText,
 };
 
 // Export types
@@ -67,3 +69,6 @@ export type { ContactFormProps } from "./ContactForm";
 export type { MapProps } from "./Map";
 export type { InputFieldProps } from "./InputField";
 export type { InputTextAreaProps } from "./InputTextArea";
+export type { MenuOverviewProps } from "./MenuOverview";
+export type { MenuListProps } from "./MenuOverview/MenuList";
+export type { SimpleTextProps } from "./SimpleText";

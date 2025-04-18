@@ -14,28 +14,21 @@ import SectionBgImage from "./index";
  * - Optional description text
  * - Toggle overlay to ensure text readability
  * - Override title and description color
+ * - Customize the height of the section
  *
  * ## Usage
  * ```tsx
  * // Basic usage with just title
  * <SectionBgImage
+ *  title="Section title"
  *  bgImage="https://example.com/image.jpg"
- *  title="Welcome"
+ *  as="h1"
+ *  sectionHeight="600px"
+ *  titleColor="#000"
+ *  descriptionColor="#000"
+ *  enableOverlay
  * />
  *
- * // With description
- * <SectionBgImage
- * bgImage="https://example.com/image.jpg"
- * titile="Our Service"
- * description="Discover what we offer"
- * />
- *
- * // Custom heading level
- * <SectionBgImage
- * bgImage="https://example.com/image.jpg"
- * title="About Us"
- * as="h2"
- * />
  * ```
  */
 const meta = {
@@ -43,9 +36,6 @@ const meta = {
   component: SectionBgImage,
   parameters: {
     layout: "fullscreen", //Changed to fullscreen to better showcase the section
-    docs: {
-      autodocs: true,
-    },
     viewMode: "docs",
   },
   tags: ["autodocs"],
@@ -57,30 +47,29 @@ const meta = {
     ),
   ],
   argTypes: {
-    bgImage: {
-      control: "text",
-      description: "URL of the background image to display",
-      table: {
-        type: {
-          summary: "string",
-        },
-      },
-    },
     title: {
       control: "text",
       description: "Main heading text for the section",
       table: {
-        type: {
-          summary: "string",
-        },
+        type: { summary: "requried" },
+        defaultValue: { summary: "required" },
       },
     },
+    bgImage: {
+      control: "text",
+      description: "URL of the background image to display",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "fallback image" },
+      },
+    },
+
     description: {
       control: "text",
       description: "Optional subheading text displayed below the title",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "undefined" },
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
       },
     },
     as: {
@@ -88,20 +77,41 @@ const meta = {
       options: ["h1", "h2", "h3", "h4", "h5", "h6"],
       description: "HTML heading level for the title",
       table: {
+        type: { summary: "optional" },
         defaultValue: { summary: "h1" },
       },
     },
     enableOverlay: {
       control: "boolean",
       description: "Enable the overlay in whole section",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
     },
     titleColor: {
       control: "text",
       description: "Override the color for the title",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#fff" },
+      },
     },
     descriptionColor: {
       control: "text",
       description: "Override the color for the description",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#fff" },
+      },
+    },
+    sectionHeight: {
+      control: "text",
+      description: "Customize the height of the section",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "600px" },
+      },
     },
   },
 } satisfies Meta<typeof SectionBgImage>;
@@ -118,7 +128,9 @@ export const SectionPlayground: Story = {
     bgImage:
       "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
     title: "Section Title",
+    description: "Discover what we can do for you",
   },
+  tags: ["!autodocs"],
 };
 /**
  * Default section with background image.
@@ -129,62 +141,50 @@ export const Default: Story = {
     bgImage:
       "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
     title: "Welcome to Our Site",
+    description: "Discover what we can do for you",
   },
   tags: ["!dev"],
 };
 
 /**
  * Default section with background image.
- * Disable overlay feature
+ * enable overlay feature
  */
-export const WithOverlayDisbale: Story = {
+export const WithOverlay: Story = {
   args: {
     bgImage:
       "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
     title: "Welcome to Our Site",
-    enableOverlay: false,
+    description: "Discover what we can do for you",
+    enableOverlay: true,
   },
   tags: ["!dev"],
 };
 
 /**
- * Section with description text.
- * Demonstrate how to include additonal text below the title.
+ * Default section with fallback background image.
  */
-export const WithDescription: Story = {
+export const WithFallbackimage: Story = {
   args: {
-    bgImage:
-      "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
-    title: "Our Services",
+    title: "Welcome to Our Site",
     description: "Discover what we can do for you",
   },
   tags: ["!dev"],
 };
+
 /**
- * Section with custom heading title color.
+ * Section with custom heading and color.
  */
-export const WithCustomTitleColor: Story = {
+export const WithCustomColor: Story = {
   args: {
     bgImage:
       "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
     title: "About Our Company",
+    description: "Description",
     as: "h2",
-    titleColor: "yellow",
+    titleColor: "#ff8a33",
+    descriptionColor: "#ff8a33",
   },
   tags: ["!dev"],
   name: "With Custom Heading Level",
-};
-/**
- * section with custom description color.
- */
-export const WithCustomDescriptionColor: Story = {
-  args: {
-    bgImage:
-      "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
-    title: "Our Service",
-    description:
-      "Here's a more detailed description that provides additional context about this section. It might span several lines depending on the viewport width.",
-    descriptionColor: "Red",
-  },
-  tags: ["!dev"],
 };

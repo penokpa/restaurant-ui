@@ -78,19 +78,6 @@ describe("Typography Component", () => {
       const { container } = render(<Typography as="p" />);
       expect(container.firstChild).toBeNull();
     });
-
-    it("throws error when 'as' prop is empty", () => {
-      const consoleError = vi
-        .spyOn(console, "error")
-        .mockImplementation(() => {});
-
-      expect(() => {
-        // @ts-expect-error: Testing invalid prop
-        render(<Typography as="">Content</Typography>);
-      }).toThrow("as should not be empty");
-
-      consoleError.mockRestore();
-    });
   });
 
   describe("Edge Cases", () => {

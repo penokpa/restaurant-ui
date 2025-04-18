@@ -1,5 +1,3 @@
-import defaultBgImage from "@/assets/image/fade-mountain.png";
-
 import Container from "../Container";
 import Row from "../Row";
 import Col from "../Col";
@@ -23,6 +21,10 @@ export type OppeningHoursProps = {
   hoursTitle?: string;
   bgImage?: string;
   enbaleOverlay?: boolean;
+  textColor?: string;
+  linkTextColor?: string;
+  btnColor?: string;
+  btnBgColor?: string;
 };
 
 const OpeningHours = ({
@@ -37,10 +39,15 @@ const OpeningHours = ({
   hoursTitle = "Hours:",
   bgImage,
   enbaleOverlay = false,
+  textColor,
+  linkTextColor,
+  btnColor,
+  btnBgColor,
 }: OppeningHoursProps) => {
   return (
     <StyledDiv
-      bgImage={bgImage || defaultBgImage}
+      bgImage={bgImage}
+      $linkTextColor={linkTextColor}
       data-testid="opening-hours-wrapper-id"
     >
       {enbaleOverlay && <Overlay testId="opening-hours-overlay-id" />}
@@ -48,7 +55,7 @@ const OpeningHours = ({
         <Row>
           <Col>
             <div className="oppening-hours-wrapper" data-testid="opening-hours">
-              <Typography as="h4" testId="opening-hours-text">
+              <Typography as="h4" testId="opening-hours-text" color={textColor}>
                 {hoursTitle}
               </Typography>
 
@@ -57,15 +64,22 @@ const OpeningHours = ({
                   <Typography
                     as="subtitle1"
                     testId="opening-hours-lunch-time-text"
+                    color={textColor}
                   >
                     {lunchTime}
                   </Typography>
                 )}
                 {lastTableSeated && (
-                  <Typography as="subtitle1">{lastTableSeated}</Typography>
+                  <Typography as="subtitle1" color={textColor}>
+                    {lastTableSeated}
+                  </Typography>
                 )}
                 {openInformation && (
-                  <Typography as="subtitle1" testId="opening-hour-information">
+                  <Typography
+                    as="subtitle1"
+                    testId="opening-hour-information"
+                    color={textColor}
+                  >
                     {openInformation}
                   </Typography>
                 )}
@@ -73,6 +87,7 @@ const OpeningHours = ({
                   <Typography
                     as="subtitle1"
                     testId="opening-hour-dinner-time-text"
+                    color={textColor}
                   >
                     {dinnerTime}
                   </Typography>
@@ -85,6 +100,8 @@ const OpeningHours = ({
                     skin="contained"
                     href={orderOnlineUrl}
                     testId="opening-hour-order-btn"
+                    bgColor={btnBgColor}
+                    color={btnColor}
                   >
                     {orderBtnLabel}
                   </Button>

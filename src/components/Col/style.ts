@@ -22,8 +22,8 @@ const ColWrapper = styled.div<ColProps & StyledProps>`
   ${({ $xs, $sm, $md, $lg, $xl, $xxl, $xxxl }) => css`
     position: relative;
     width: 100%;
-    padding-left: 16px; /* gutter spacing */
-    padding-right: 16px;
+    padding-left: 15px;
+    padding-right: 15px;
     flex-grow: 1;
     flex-basis: 0;
     max-width: 100%;

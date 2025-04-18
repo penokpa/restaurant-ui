@@ -1,14 +1,19 @@
 import styled, { css } from "styled-components";
 
-export const StyledDiv = styled.div<{ $bgImage: string }>`
-  ${({ $bgImage }) => css`
+type StyleProps = {
+  $bgImage?: string;
+  $sectionHeight?: string;
+};
+
+export const StyledDiv = styled.div<StyleProps>`
+  ${({ $bgImage, $sectionHeight = "600px" }) => css`
     &.section-image-wrapper {
       background-image: url(${$bgImage});
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 250px 0;
+      height: ${$sectionHeight};
       background-position: 50%;
 
       position: relative;
@@ -16,13 +21,9 @@ export const StyledDiv = styled.div<{ $bgImage: string }>`
       .menu-title-content {
         z-index: 2;
         position: relative;
-        color: #fff;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        .h1 {
-          color: #fff;
-        }
 
         .section-title {
           padding-top: 0 !important;

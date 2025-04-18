@@ -80,7 +80,7 @@ describe("SectionBgImage Component", () => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        padding: "250px 0",
+        height: "600px",
       });
     });
   });

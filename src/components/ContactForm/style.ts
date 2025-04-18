@@ -62,7 +62,7 @@ export const StyledDiv = styled.div`
             justify-content: center;
             transition: 0.3s all ease-in-out;
             &:hover {
-              color: ${theme.color.black["100"]};
+              color: ${theme.color.primary};
             }
 
             a {

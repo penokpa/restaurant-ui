@@ -11,7 +11,7 @@ export const StyledDiv = styled.div`
     }
 
     .label-wrapper {
-      color: ${theme.color.black["100"]};
+      color: ${theme.color.primary};
       display: block;
       font-size: 14px;
       letter-spacing: 0.25em;
@@ -36,7 +36,7 @@ export const InputTextAreaStyle = styled.textarea`
     padding: 0.75em 1em;
     font-family: ${theme.font.defaultSystemTheme};
     font-size: 16px;
-    color: ${theme.color.black["100"]};
+    color: ${theme.color.primary};
     letter-spacing: 1px;
 
     &::placeholder {

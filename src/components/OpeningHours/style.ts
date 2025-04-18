@@ -1,14 +1,16 @@
 import styled, { css, DefaultTheme } from "styled-components";
 
+import defaultBgImage from "@/assets/image/fade-mountain.png";
 import { mediaQuery } from "@/theme/utils";
 
 type Props = {
   theme: DefaultTheme;
-  bgImage: string;
+  bgImage?: string;
+  $linkTextColor?: string;
 };
 
 export const StyledDiv = styled.div<Props>`
-  ${({ theme, bgImage }) => css`
+  ${({ theme, bgImage = defaultBgImage, $linkTextColor }) => css`
     padding: 60px 0;
     background: ${bgImage ? `url(${bgImage})` : "none"} no-repeat 50% fixed;
     background-size: cover;
@@ -54,7 +56,7 @@ export const StyledDiv = styled.div<Props>`
           }
 
           a {
-            color: ${theme.color.black["100"]};
+            color: ${$linkTextColor || theme.color.primary};
             text-decoration: underline;
             font-weight: 400;
           }

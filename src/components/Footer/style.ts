@@ -13,7 +13,7 @@ export const StyledFooter = styled.footer`
       font-family: ${theme.font.defaultSystemTheme};
       margin-top: 20px;
       opacity: 0.3;
-      color: ${theme.color.black["100"]};
+      color: ${theme.color.primary};
       letter-spacing: 2px;
       word-break: break-all;
     }

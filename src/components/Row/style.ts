@@ -6,6 +6,8 @@ const RowWrapper = styled.div<RowProps>`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  margin-left: -15px;
+  margin-right: -15px;
   &.no-gutter {
     margin-left: 0;
     margin-right: 0;

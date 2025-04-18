@@ -15,6 +15,10 @@ import OpeningHours from "./index";
  * - Location with Google Maps link
  * - Phone number with click-to-call
  * - Customizable hours title
+ * - Customize the text and link text color
+ * - Customize btn color
+ * - Toggle overlay feature
+ * - Custom background image
  * - Responsive design
  *
  * @example
@@ -29,6 +33,12 @@ import OpeningHours from "./index";
  *   phoneNumber="+1 234 567 8900"
  *   orderBtnLabel="ORDER ONLINE"
  *   hoursTitle="Hours:"
+ *   bgImage="/background-image.png"
+ *   textColor="#000"
+ *   linkTextColor="#000"
+ *   btnColor="#000"
+ *   btnBgColor="#000"
+ *   enableOverlay
  * />
  * ```
  */
@@ -42,38 +52,113 @@ const meta = {
     lunchTime: {
       control: "text",
       description: "Lunch service hours",
+      table: {
+        type: { summary: "required" },
+      },
     },
     dinnerTime: {
       control: "text",
       description: "Dinner service hours",
+      table: {
+        type: { summary: "required" },
+      },
     },
     openInformation: {
       control: "text",
       description: "Additional opening information",
+      table: {
+        type: { summary: "required" },
+      },
     },
     lastTableSeated: {
       control: "text",
       description: "Last table seating time information",
+      table: {
+        type: { summary: "required" },
+      },
     },
     orderOnlineUrl: {
       control: "text",
       description: "URL for online ordering",
+      table: {
+        type: { summary: "required" },
+      },
     },
     address: {
       control: "text",
       description: "Restaurant address",
+      table: {
+        type: { summary: "required" },
+      },
     },
     phoneNumber: {
       control: "text",
       description: "Contact phone number",
+      table: {
+        type: { summary: "required" },
+      },
     },
     orderBtnLabel: {
       control: "text",
       description: "Custom label for the order button",
+      table: {
+        type: { summary: "required" },
+      },
     },
     hoursTitle: {
       control: "text",
       description: "Custom title for the hours section",
+      table: {
+        type: { summary: "required" },
+      },
+    },
+    bgImage: {
+      control: "text",
+      description: "Section background image",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "fallback image" },
+      },
+    },
+    enbaleOverlay: {
+      control: "boolean",
+      description: "Background overlay",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    textColor: {
+      control: "text",
+      description: "Color of normal text. Not link text",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+    linkTextColor: {
+      control: "text",
+      description: "Color of link text. Not normal text",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+    btnColor: {
+      control: "text",
+      description: "Color of button text",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+    btnBgColor: {
+      control: "text",
+      description: "Background button color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
     },
   },
   decorators: [
@@ -131,9 +216,9 @@ export const CustomLabels: Story = {
 };
 
 /**
- * OpeningHours with minimal information
+ * OpeningHours with custom text color
  */
-export const Minimal: Story = {
+export const CustomTextColor: Story = {
   args: {
     lunchTime: "11:00 AM - 3:00 PM",
     dinnerTime: "5:00 PM - 10:00 PM",
@@ -142,6 +227,10 @@ export const Minimal: Story = {
     orderOnlineUrl: "https://example.com/order",
     address: "123 Restaurant St",
     phoneNumber: "+1 234 567 8900",
+    textColor: "#ff8a33",
+    linkTextColor: "#5e4933",
+    btnBgColor: "#5e4933",
+    btnColor: "#ff8a33",
   },
   tags: ["!dev"],
 };

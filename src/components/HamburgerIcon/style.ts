@@ -19,7 +19,7 @@ export const StyledDiv = styled.div`
         width: 100%;
         height: 2px;
         display: block;
-        background-color: ${theme.color.black["100"]};
+        background-color: ${theme.color.primary};
         margin-bottom: 4px;
         transition: 0.3s ease all;
         border-radius: 3px;
