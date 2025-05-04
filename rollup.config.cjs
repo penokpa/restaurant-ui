@@ -7,7 +7,6 @@ const image = require("@rollup/plugin-image");
 const replace = require("@rollup/plugin-replace");
 const path = require("path");
 const json = require("@rollup/plugin-json");
-const css = require("rollup-plugin-css-only");
 
 const config = [
   {
@@ -34,6 +33,7 @@ const config = [
       replace({
         preventAssignment: true,
         "use client": "",
+        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
       }),
       alias({
         entries: [
@@ -44,12 +44,18 @@ const config = [
         ],
       }),
       nodeResolve({
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".css"],
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+        preferBuiltins: true,
+        browser: true,
       }),
       json(),
       image(),
-      commonjs(),
-      css({ output: "dist/styles.css" }),
+      commonjs({
+        include: /node_modules/,
+        transformMixedEsModules: true,
+        requireReturnsDefault: "auto",
+        esmExternals: true,
+      }),
       typescript({
         tsconfig: "./tsconfig.json",
         exclude: ["**/__tests__", "**/*.test.tsx"],
@@ -57,13 +63,7 @@ const config = [
         declarationDir: "dist/types",
       }),
     ],
-    external: [
-      "react",
-      "react-dom",
-      "styled-components",
-      "framer-motion",
-      "motion-dom",
-    ],
+    external: ["react", "react-dom", "styled-components"],
   },
 ];
 module.exports = config;

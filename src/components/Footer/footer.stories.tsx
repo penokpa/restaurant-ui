@@ -4,45 +4,26 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 
 import Footer from "./index";
 
+/**
+ * Footer component provides a consistent footer layout across the application. It displays text content with predefined styling and supports customization.
+ *
+ * ## Features
+ * - Customizable footer text
+ * - Consisten styling with theme
+ * - Responsive layout
+ * - Facebook and instagram icon feature supported with relative link
+ *
+ * ## Usage
+ * <Footer
+ *  footerText = "footer text test"
+ *  facebookLink = "www.facebook.com"
+ *  instagramIcon = "www.instagram.com"
+ * />
+ */
+
 const meta = {
   title: "Components/Footer",
   component: Footer,
-  parameters: {
-    layout: "centered",
-    docs: {
-      description: {
-        component: `
-Footer component provides a consistent footer layout across the application.
-It displays text content with predefined styling and supports customization.
-
-### Features
-- Customizable footer text
-- Consistent styling with theme
-- Responsive layout
-- Accessible markup
-
-### Usage
-\`\`\`tsx
-// Default usage
-<Footer />
-
-// With custom text
-<Footer footerText="Custom Footer Text" />
-\`\`\`
-
-### Props
-- \`footerText\`: Text to display in the footer (optional, defaults to "Footer Text")
-
-### Styling
-The footer component uses styled-components and follows the theme's styling guidelines:
-- Centered content layout
-- Light background color
-- Consistent padding
-- Typography styling for text
-`,
-      },
-    },
-  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -50,6 +31,95 @@ The footer component uses styled-components and follows the theme's styling guid
       </ThemeProvider>
     ),
   ],
+  argTypes: {
+    footerText: {
+      control: "text",
+      description: "Footer text",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    facebookLink: {
+      control: "text",
+      description: "Facebook URL",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    facebookIcon: {
+      control: "text",
+      description: "To override default facebook icon",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    instagramLink: {
+      control: "text",
+      description: "Instagram URL",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    instagramIcon: {
+      control: "text",
+      description: "To override default instagram icon",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    yelpIcon: {
+      control: "text",
+      description: "To override yelp icon",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "default yep icon" },
+      },
+    },
+    yelpLink: {
+      control: "text",
+      description: "yelp link",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    bgColor: {
+      control: "text",
+      description: "Override footer background color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#fff" },
+      },
+    },
+    iconBgColor: {
+      description: "background color for the icon",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "" },
+      },
+    },
+    iconRadius: {
+      control: "boolean",
+      description: "50% radius will be applied",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    textColor: {
+      control: "text",
+      description: "Override footer text color",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "#000" },
+      },
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof Footer>;
 

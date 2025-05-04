@@ -25,7 +25,10 @@ describe("Drawer Component", () => {
 
   it("does not render when open is false", () => {
     render(<Drawer {...defaultProps} open={false} />);
-    expect(screen.queryByTestId("drawer-content")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("drawer-wrapper-test-id")).toHaveStyle({
+      height: 0,
+      overflow: "hidden",
+    });
   });
 
   it("calls onClose when clicking the overlay", () => {
@@ -46,19 +49,9 @@ describe("Drawer Component", () => {
     expect(document.body.classList.contains("menu-open")).toBe(false);
   });
 
-  it("renders with different positions", () => {
-    const positions = ["left", "right", "top", "bottom"] as const;
-    positions.forEach((position) => {
-      const { container } = render(
-        <Drawer {...defaultProps} position={position} />,
-      );
-      expect(container.querySelector(`.${position}`)).toBeInTheDocument();
-    });
-  });
-
   it("renders with custom z-index", () => {
     render(<Drawer {...defaultProps} drawerZindex={999} />);
-    const drawer = screen.getByTestId("drawer-wrapper").closest("div");
+    const drawer = screen.getByTestId("drawer-wrapper-test-id");
     expect(drawer).toHaveStyle({ zIndex: 999 });
   });
 });

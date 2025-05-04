@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { mediaQuery } from "@/theme/utils";
+import { maxMediaQuery } from "@/theme/utils";
 
 const ContainerWrapper = styled.div`
   padding-right: 30px;
@@ -13,19 +13,21 @@ const ContainerWrapper = styled.div`
     padding-left: 5px;
   } */
 
-  ${mediaQuery("md")} {
+  ${maxMediaQuery("md")} {
     max-width: 720px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
-  ${mediaQuery("lg")} {
+  ${maxMediaQuery("lg")} {
     max-width: 960px;
   }
 
-  ${mediaQuery("xl")} {
+  ${maxMediaQuery("xl")} {
     max-width: 100%;
   }
 
-  ${mediaQuery("sm")} {
+  ${maxMediaQuery("sm")} {
     max-width: 100%;
   }
 `;

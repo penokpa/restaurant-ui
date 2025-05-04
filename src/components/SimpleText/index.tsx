@@ -5,7 +5,7 @@ export type SimpleTextProps = {
   text: string;
   as?: TagType;
   className?: string;
-  wrapperClassName?: string;
+  wrapperClassName?: "menu-overview-title" | (string & Record<never, never>);
   testId?: string;
 };
 

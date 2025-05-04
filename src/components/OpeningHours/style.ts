@@ -5,16 +5,18 @@ import { mediaQuery } from "@/theme/utils";
 
 type Props = {
   theme: DefaultTheme;
-  bgImage?: string;
+  $bgImage?: string;
   $linkTextColor?: string;
 };
 
 export const StyledDiv = styled.div<Props>`
-  ${({ theme, bgImage = defaultBgImage, $linkTextColor }) => css`
+  ${({ theme, $bgImage = defaultBgImage, $linkTextColor }) => css`
     padding: 60px 0;
-    background: ${bgImage ? `url(${bgImage})` : "none"} no-repeat 50% fixed;
+    background-image: url(${$bgImage});
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    width: 100vw;
+    background-attachment: fixed;
 
     .oppening-hours-wrapper {
       display: flex;

@@ -1,5 +1,4 @@
 import Lightbox from "react-image-lightbox";
-import "./style.css";
 
 type Props = {
   images: Array<{ url: string; original: string }>;

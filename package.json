@@ -1,7 +1,7 @@
 {
   "name": "restaurant-ui",
   "private": false,
-  "version": "0.9.4-OPTIMIZE",
+  "version": "1.5.0-STABLE",
   "main": "dist/components/index.js",
   "module": "dist/components/index.esm.js",
   "types": "dist/types/components/index.d.ts",
@@ -50,13 +50,15 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "framer-motion": "12.6.3",
     "google-map-react": "^2.2.1",
     "html-react-parser": "^5.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
+    "react-helmet": "^6.1.0",
     "react-image-lightbox": "^5.1.4",
     "react-router-dom": "^7.4.1",
+    "react-youtube": "^10.1.0",
     "styled-components": "^6.1.16"
   },
   "devDependencies": {
@@ -84,6 +86,7 @@
     "@types/node": "^20.11.24",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.2.19",
+    "@types/react-helmet": "^6.1.11",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
@@ -102,7 +105,6 @@
     "react-docgen-typescript": "^2.2.2",
     "rimraf": "^3.0.2",
     "rollup": "^3.0.0",
-    "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "storybook": "^8.6.11",
@@ -113,7 +115,6 @@
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "styled-components": "^5.3.0",
-    "framer-motion": "12.6.3"
+    "styled-components": "^5.3.0"
   }
 }

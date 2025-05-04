@@ -11,7 +11,7 @@ describe("SectionBgImage Component", () => {
     title: "Section Title",
     description: "Section Description",
     as: "h1",
-    enableOverlay: true,
+    overlay: true,
     titleColor: "#ffffff",
     descriptionColor: "#ffffff",
   };
@@ -92,7 +92,7 @@ describe("SectionBgImage Component", () => {
     });
 
     it("does not render overlay when disabled", () => {
-      render(<SectionBgImage {...mockProps} enableOverlay={false} />);
+      render(<SectionBgImage {...mockProps} overlay={false} />);
       expect(
         screen.queryByTestId("section-overlay-test-id"),
       ).not.toBeInTheDocument();

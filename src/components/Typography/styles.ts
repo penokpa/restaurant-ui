@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
+import { DefaultTheme } from "styled-components/dist/types";
 
-import { mediaQuery } from "@/theme/utils";
-import { theme } from "@/theme";
+import { maxMediaQuery } from "@/theme/utils";
 
 //Default boots strap font size
 // h1 Bootstrap heading (2.5rem = 40px)
@@ -13,9 +13,10 @@ import { theme } from "@/theme";
 
 type StyleProps = {
   color?: string;
+  theme: DefaultTheme;
 };
 
-const style = ({ color }: StyleProps) => css`
+const style = ({ color, theme }: StyleProps) => css`
   &.h1,
   &.h2,
   &.h3,
@@ -36,7 +37,7 @@ const style = ({ color }: StyleProps) => css`
   }
 
   &.h2 {
-    font-size: 32px;
+    font-size: 34px;
     line-height: 40px;
     letter-spacing: 2px;
     color: ${color || theme.color.primary};
@@ -62,7 +63,7 @@ const style = ({ color }: StyleProps) => css`
     font-weight: 400;
     color: ${color || theme.color.primary};
 
-    ${mediaQuery("md")} {
+    ${maxMediaQuery("md")} {
       font-size: 16px;
       line-height: 24px;
     }
@@ -81,7 +82,7 @@ const style = ({ color }: StyleProps) => css`
     font-weight: 100;
     color: ${color || theme.color.primary};
 
-    ${mediaQuery("md")} {
+    ${maxMediaQuery("md")} {
       font-size: 18px;
       line-height: 34px;
     }
@@ -93,7 +94,7 @@ const style = ({ color }: StyleProps) => css`
     letter-spacing: 1px;
     color: ${color || theme.color.primary};
 
-    ${mediaQuery("md")} {
+    ${maxMediaQuery("md")} {
       font-size: 14px;
       line-height: 24px;
     }
@@ -117,7 +118,7 @@ const style = ({ color }: StyleProps) => css`
     padding-top: 100px;
     line-height: 60px;
 
-    ${mediaQuery("md")} {
+    ${maxMediaQuery("md")} {
       padding-top: 50px;
       font-size: 38px;
       line-height: 40px;
@@ -131,40 +132,40 @@ const style = ({ color }: StyleProps) => css`
   &.section-title-helper {
     margin-top: 40px;
 
-    ${mediaQuery("md")} {
+    ${maxMediaQuery("md")} {
       margin-top: 20px;
     }
   }
 `;
 
 export const H1 = styled.h1`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const H2 = styled.h2`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const H3 = styled.h3`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const H4 = styled.h4`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const H5 = styled.h5`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const H6 = styled.h6`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const Paragraph = styled.p`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;
 
 export const Span = styled.span`
-  ${({ color }: StyleProps) => style({ color })}
+  ${({ color, theme }: StyleProps) => style({ color, theme })}
 `;

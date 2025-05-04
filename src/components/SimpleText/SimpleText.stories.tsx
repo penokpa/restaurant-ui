@@ -6,6 +6,12 @@ import SimpleText from "./index";
  * SimpleText is a versatile text component that can be rendered as various HTML elements.
  * It provides a consistent way to display text content with optional styling and test IDs.
  *
+ * ## Features
+ * - Multiple HTML element options (h1-h6, p, span)
+ * - Custom styling support. predefine class menu-overview-title
+ * - Test ID support for testing
+ * - Responsive layout integration
+ *
  * @component
  * @example
  * ```tsx
@@ -22,46 +28,6 @@ const meta = {
   component: SimpleText,
   parameters: {
     layout: "centered",
-    docs: {
-      description: {
-        component: `
-The SimpleText component is a flexible text display component that can be rendered as various HTML elements.
-It's particularly useful for:
-- Displaying headings and paragraphs
-- Consistent text styling across the application
-- Easy testing with test IDs
-- Custom styling through className prop
-
-### Features
-- Multiple HTML element options (h1-h6, p, span)
-- Custom styling support
-- Test ID support for testing
-- Responsive layout integration
-
-### Usage
-\`\`\`tsx
-import { SimpleText } from '@/components/SimpleText';
-
-// Basic usage
-<SimpleText text="Welcome" as="h1" />
-
-// With custom styling
-<SimpleText 
-  text="Special Offer" 
-  as="h2" 
-  className="text-red-500 font-bold" 
-/>
-
-// With test ID
-<SimpleText 
-  text="Testable Text" 
-  as="p" 
-  testId="testable-text" 
-/>
-\`\`\`
-        `,
-      },
-    },
   },
   tags: ["autodocs"],
   argTypes: {

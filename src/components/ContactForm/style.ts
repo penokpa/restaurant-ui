@@ -10,6 +10,10 @@ export const StyledDiv = styled.div`
       gap: 40px;
       padding: 80px 0;
 
+      &.contact-only {
+        grid-template-columns: 1fr;
+      }
+
       ${maxMediaQuery("md")} {
         grid-template-columns: 1fr;
       }

@@ -68,8 +68,13 @@ export const StyledDiv = styled.div<StyleProps>`
         }
 
         &.float-logo {
-          width: 120px;
-          height: 120px;
+          width: 140px;
+          height: 140px;
+
+          ${maxMediaQuery("md")} {
+            width: 120px;
+            height: 120px;
+          }
         }
 
         &.circle {

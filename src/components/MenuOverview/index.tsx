@@ -18,17 +18,16 @@ const MenuOverview = ({
   if (!menuList.length) return null;
 
   return (
-    <StyledDiv data-testId="menu-details-test-id">
-      <div className="menu-title-wrapper">
-        <Typography as="h3" className="menu-title" testId="menu-title-test-id">
+    <StyledDiv
+      data-testid="menu-details-test-id"
+      className="menu-overiew-wrapper"
+    >
+      <div className="menu-overview-title-wrapper">
+        <Typography as="h3" testId="menu-title-test-id">
           {menuTitle}
         </Typography>
         {menuDescription && (
-          <Typography
-            as="subtitle2"
-            className="dish-note-content"
-            testId="menu-description-test-id"
-          >
+          <Typography as="subtitle2" testId="menu-description-test-id">
             {menuDescription}
           </Typography>
         )}
@@ -42,4 +41,4 @@ const MenuOverview = ({
   );
 };
 
-export default React.memo(MenuOverview);
+export default MenuOverview;

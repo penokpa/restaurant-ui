@@ -48,33 +48,6 @@ ${({ theme }) => css`
     text-decoration: none;
   }
 
-  .page-not-found-wrapper {
-    padding: 15rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    .not-found-title {
-      font-size: 67px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      .not-found-status-code {
-        font-size: 100px;
-      }
-    }
-
-    .not-found-helper-text {
-      font-size: 24px;
-      margin: 30px 0;
-      color: #fff;
-    }
-    border-top: 1px solid rgba(212, 212, 255, 0.1);
-  }
-
   .overflow-hidden {
     height: 100vh;
     overflow: hidden;

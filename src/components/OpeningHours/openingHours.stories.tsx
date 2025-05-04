@@ -20,6 +20,7 @@ import OpeningHours from "./index";
  * - Toggle overlay feature
  * - Custom background image
  * - Responsive design
+ * - Override the phone and location icon
  *
  * @example
  * ```tsx
@@ -158,6 +159,22 @@ const meta = {
       table: {
         type: { summary: "optional" },
         defaultValue: { summary: "#000" },
+      },
+    },
+    locationIcon: {
+      control: "text",
+      description: "to override the default location icon",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "Default location icon" },
+      },
+    },
+    phoneIcon: {
+      control: "text",
+      description: "to override the default phone icon",
+      table: {
+        type: { summary: "optional" },
+        defaultValue: { summary: "Default phone icon" },
       },
     },
   },

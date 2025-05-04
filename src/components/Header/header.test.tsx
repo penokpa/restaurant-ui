@@ -1,4 +1,4 @@
-import { screen, fireEvent } from "@testing-library/react";
+import { screen, fireEvent, within } from "@testing-library/react";
 import { expect, vi } from "vitest";
 
 import { render } from "@/utils/render";
@@ -38,7 +38,9 @@ describe("Header Component", () => {
     it("renders navigation links", () => {
       render(<Header {...defaultProps} />);
       mockNavLinks.forEach((link) => {
-        expect(screen.getByText(link.label)).toBeInTheDocument();
+        expect(
+          screen.getByTestId(`header-nav-link-${link.label}`),
+        ).toBeInTheDocument();
       });
     });
 
@@ -67,8 +69,8 @@ describe("Header Component", () => {
       render(<Header navLink={mockNavLinks} shouldLogoFloat />);
       const menuWrapper = screen.getByTestId("header-logo-wrapper");
       expect(menuWrapper).toHaveStyle({
-        width: "120px",
-        height: "120px",
+        width: "140px",
+        height: "140px",
       });
     });
 
@@ -104,14 +106,18 @@ describe("Header Component", () => {
   describe("Navigation", () => {
     it("renders correct number of navigation links", () => {
       render(<Header {...defaultProps} />);
-      const links = screen.getAllByRole("link");
-      expect(links).toHaveLength(mockNavLinks.length + 1); // +1 for logo link
+      const menuWrapper = screen.getByTestId("header-menu-wrapper");
+      const links = within(menuWrapper).getAllByRole("link");
+      expect(links).toHaveLength(mockNavLinks.length); // +1 for logo link
     });
 
     it("renders navigation links with correct URLs", () => {
       render(<Header {...defaultProps} />);
       mockNavLinks.forEach((link) => {
-        const navLink = screen.getByText(link.label);
+        const menuWrapper = screen.getByTestId("header-menu-wrapper");
+        const navLink = within(menuWrapper).getByTestId(
+          `header-nav-link-${link.label}`,
+        );
         expect(navLink).toHaveAttribute("href", link.url);
       });
     });
@@ -123,13 +129,18 @@ describe("Header Component", () => {
       const hamburgerButton = screen.getByTestId("hamburger-icon");
 
       // Initial state - drawer should be closed
-      expect(screen.queryByTestId("header-drawer")).not.toBeInTheDocument();
+      expect(screen.queryByTestId("drawer-wrapper-test-id")).toHaveStyle({
+        height: 0,
+        overflow: "hidden",
+      });
 
       // Click hamburger button
       fireEvent.click(hamburgerButton);
 
       // Drawer should be open
-      expect(screen.getByTestId("header-drawer")).toBeInTheDocument();
+      expect(screen.getByTestId("drawer-wrapper-test-id")).toHaveStyle({
+        height: "100%",
+      });
 
       // Click hamburger button again
       fireEvent.click(hamburgerButton);

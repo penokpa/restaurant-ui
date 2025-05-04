@@ -26,7 +26,7 @@ import SectionBgImage from "./index";
  *  sectionHeight="600px"
  *  titleColor="#000"
  *  descriptionColor="#000"
- *  enableOverlay
+ *  overlay
  * />
  *
  * ```
@@ -81,7 +81,7 @@ const meta = {
         defaultValue: { summary: "h1" },
       },
     },
-    enableOverlay: {
+    overlay: {
       control: "boolean",
       description: "Enable the overlay in whole section",
       table: {
@@ -148,7 +148,7 @@ export const Default: Story = {
 
 /**
  * Default section with background image.
- * enable overlay feature
+ * without overlay feature
  */
 export const WithOverlay: Story = {
   args: {
@@ -156,7 +156,7 @@ export const WithOverlay: Story = {
       "https://ucarecdn.com/1f18f5f0-443f-4211-86f3-7b1ad2f55bcf/-/progressive/yes/-/format/auto/-/resize/2000x/&quot",
     title: "Welcome to Our Site",
     description: "Discover what we can do for you",
-    enableOverlay: true,
+    overlay: false,
   },
   tags: ["!dev"],
 };

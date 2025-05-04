@@ -48,4 +48,4 @@ const MenuList = ({ name, description, price, food_type }: MenuListProps) => {
   );
 };
 
-export default React.memo(MenuList);
+export default MenuList;

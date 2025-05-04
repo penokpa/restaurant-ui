@@ -10,6 +10,12 @@ export const StyledSection = styled.section`
       padding-top: 0;
     }
 
+    .ourstory-title {
+      font-size: 48px;
+      font-family: inherit;
+      line-height: 48px;
+    }
+
     .our-story-wrapper {
       margin-top: 40px;
       color: ${theme.color.primary};

@@ -4,8 +4,8 @@ import Col from "../Col";
 import Typography from "../Typography";
 import Button from "../Button";
 import ImageWithFallBack from "../ImageWithFallBack";
-import locationIcon from "../../assets/icons/location-pin.png";
-import phoneIcon from "../../assets/icons/phone-call.png";
+import defaultLocationIcon from "../../assets/icons/location-pin.png";
+import defaultPhoneIcon from "../../assets/icons/phone-call.png";
 import { StyledDiv } from "./style";
 import Overlay from "../Overlay";
 
@@ -16,7 +16,7 @@ export type OppeningHoursProps = {
   orderOnlineUrl: string;
   address: string;
   phoneNumber: string;
-  lastTableSeated: string;
+  lastTableSeated?: string;
   orderBtnLabel?: string;
   hoursTitle?: string;
   bgImage?: string;
@@ -25,6 +25,8 @@ export type OppeningHoursProps = {
   linkTextColor?: string;
   btnColor?: string;
   btnBgColor?: string;
+  phoneIcon?: string;
+  locationIcon?: string;
 };
 
 const OpeningHours = ({
@@ -43,10 +45,12 @@ const OpeningHours = ({
   linkTextColor,
   btnColor,
   btnBgColor,
+  phoneIcon = defaultPhoneIcon,
+  locationIcon = defaultLocationIcon,
 }: OppeningHoursProps) => {
   return (
     <StyledDiv
-      bgImage={bgImage}
+      $bgImage={bgImage}
       $linkTextColor={linkTextColor}
       data-testid="opening-hours-wrapper-id"
     >
@@ -69,6 +73,15 @@ const OpeningHours = ({
                     {lunchTime}
                   </Typography>
                 )}
+                {dinnerTime && (
+                  <Typography
+                    as="subtitle1"
+                    testId="opening-hour-dinner-time-text"
+                    color={textColor}
+                  >
+                    {dinnerTime}
+                  </Typography>
+                )}
                 {lastTableSeated && (
                   <Typography as="subtitle1" color={textColor}>
                     {lastTableSeated}
@@ -81,15 +94,6 @@ const OpeningHours = ({
                     color={textColor}
                   >
                     {openInformation}
-                  </Typography>
-                )}
-                {dinnerTime && (
-                  <Typography
-                    as="subtitle1"
-                    testId="opening-hour-dinner-time-text"
-                    color={textColor}
-                  >
-                    {dinnerTime}
                   </Typography>
                 )}
               </div>

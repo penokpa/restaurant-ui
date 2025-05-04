@@ -1,4 +1,5 @@
 import GoogleMapReact from "google-map-react";
+import { MapPin } from "react-feather";
 
 import { StyledDiv } from "./style";
 
@@ -28,9 +29,19 @@ const Map = ({ latitude, longitude, zoomLevel, apiKey, testId }: MapProps) => {
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         data-testid={testId}
-      />
+      >
+        <Marker />
+      </GoogleMapComponent>
     </StyledDiv>
   );
 };
 
 export default Map;
+
+const Marker = () => {
+  return (
+    <div style={{ color: "red" }}>
+      <MapPin />
+    </div>
+  );
+};

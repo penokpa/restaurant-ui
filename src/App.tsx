@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import SectionBgImage from "./components/SectionBgImage";
 import OurStory from "./components/OurStory";
 import OpeningHours from "./components/OpeningHours";
-import { Footer } from "./components";
+import Footer from "./components/Footer";
 import { theme } from "./theme";
 
 const navLink = [
@@ -63,7 +63,12 @@ const App: React.FC = () => {
         textColor="yellow"
       />
 
-      <Footer footerText="FooterComponent" />
+      <Footer
+        footerText="FooterComponent"
+        facebookLink="asdasd"
+        yelpLink="asda"
+        iconRadius
+      />
     </>
   );
 };

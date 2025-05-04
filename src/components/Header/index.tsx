@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 
 import clsx from "clsx";
 
@@ -20,7 +20,7 @@ export type HeaderProps = {
   logo?: string;
   shouldLogoFloat?: boolean;
   isLogoRounded?: boolean;
-  LinkComponent?: ReactElement;
+  LinkComponent?: any;
   boxShadowOnLogo?: boolean;
   headerHeight?: string;
   navColor?: string;
@@ -52,13 +52,16 @@ const Header = ({
   const [isHeaderSticky, setIsHeaderSticky] = React.useState(false);
 
   React.useEffect(() => {
+    if (typeof window === "undefined") return;
     const detectScroll = () => {
       setIsHeaderSticky(window.scrollY >= 73);
     };
 
     window.addEventListener("scroll", detectScroll);
     return () => {
-      window.removeEventListener("scroll", detectScroll);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", detectScroll);
+      }
     };
   }, []);
 
@@ -111,7 +114,11 @@ const Header = ({
                           key={i}
                           data-testid="menu-list-id"
                         >
-                          <Link to={x.url} LinkComponent={LinkComponent}>
+                          <Link
+                            to={x.url}
+                            LinkComponent={LinkComponent}
+                            testId={`header-nav-link-${x.label}`}
+                          >
                             {x.label}
                           </Link>
                         </li>
@@ -133,8 +140,6 @@ const Header = ({
         className="search-drawer"
         open={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
-        size="fullscreen"
-        position="top"
         drawerZindex={9}
         overlayZindex={5}
         drawerTestId="header-drawer"

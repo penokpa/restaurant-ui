@@ -106,6 +106,10 @@ const meta = {
       control: "text",
       description: "Custom address icon URL",
     },
+    onlyShowContactForm: {
+      control: "boolean",
+      description: "Only shows the contact form",
+    },
   },
 } satisfies Meta<typeof ContactForm>;
 

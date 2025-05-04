@@ -22,5 +22,13 @@ describe("Footer Component", () => {
         customText,
       );
     });
+
+    it("render facebook and instagram icon", () => {
+      render(<Footer facebookLink="facebook" instagramLink="instagram" />);
+      expect(screen.getByTestId("footer-facebook-icon-id")).toBeInTheDocument();
+      expect(
+        screen.getByTestId("footer-instagram-icon-id"),
+      ).toBeInTheDocument();
+    });
   });
 });

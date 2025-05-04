@@ -1,12 +1,32 @@
 import styled, { css } from "styled-components";
 
-export const StyledFooter = styled.footer`
-  ${({ theme }) => css`
+type StyleProps = {
+  $iconBgColor?: string;
+  $bgColor?: string;
+};
+
+export const StyledFooter = styled.footer<StyleProps>`
+  ${({ theme, $iconBgColor = "#f2f2f2", $bgColor = "#fff" }) => css`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px 0;
     text-align: center;
+    background-color: ${$bgColor};
+
+    .footer-icon-list {
+      display: flex;
+      margin-bottom: 10px;
+      gap: 10px;
+
+      .footer-icon {
+        &.icon-radius {
+          background-color: ${$iconBgColor};
+          border-radius: 50%;
+        }
+      }
+    }
 
     .copyright {
       list-style: none;

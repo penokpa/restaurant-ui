@@ -35,6 +35,8 @@ const OurStory = ({
     return description.replace(/\n+/g, "<br>");
   }, [description]);
 
+  if (typeof window === "undefined") return <span />;
+
   if (isContentNull) {
     return <span />;
   }
@@ -52,7 +54,7 @@ const OurStory = ({
                 {title && (
                   <Typography
                     as="h2"
-                    className="section-title"
+                    className="ourstory-title"
                     testId="our-story-title-id"
                     color={titleColor}
                   >
